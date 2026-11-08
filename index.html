@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>냄쿵타자기 — 공병우식 타자기를 닮은 무료 한글 서체</title>
+<meta name="description" content="수동 공병우식 타자기에 반해 취미로 만든 완전 무료 한글·영문 서체. 상업 용도 포함 누구나 쓸 수 있다(SIL OFL 1.1).">
+<meta property="og:title" content="냄쿵타자기 (Naemkung Typewriter)">
+<meta property="og:description" content="수동 공병우식 타자기에 반해 취미로 만든 완전 무료 서체">
+<meta property="og:image" content="images/specimen.png">
+<style>
+  @font-face { font-family: "Naemkung"; src: url("fonts/NaemkungTypewriter-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Naemkung"; src: url("fonts/NaemkungTypewriter-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "NaemkungClean"; src: url("fonts/NaemkungTypewriter-Clean.ttf") format("truetype"); font-display: swap; }
+  :root { --paper: #f6f1e4; --ink: #1a1816; --muted: #6b645a; --line: #d9d0bc; --accent: #8a2b1f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink);
+         font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.7; }
+  main { max-width: 920px; margin: 0 auto; padding: 56px 24px 80px; }
+  .tw { font-family: "Naemkung", monospace; }
+  header h1 { font-family: "Naemkung", monospace; font-weight: 700; font-size: clamp(48px, 10vw, 96px); line-height: 1.1; margin: 0 0 8px; letter-spacing: 0.02em; }
+  header .en { font-family: "Naemkung", monospace; color: var(--muted); font-size: 20px; margin: 0 0 24px; }
+  header .lead { font-size: 18px; margin: 0 0 28px; }
+  .free { display: inline-block; border: 2px solid var(--accent); color: var(--accent); padding: 2px 10px; font-weight: 700; transform: rotate(-2deg); margin-right: 8px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-block; padding: 10px 18px; border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; font-family: "Naemkung", monospace; font-size: 16px; background: #fffaf0; }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn:hover { transform: translateY(-1px); }
+  section { margin-top: 64px; }
+  h2 { font-family: "Naemkung", monospace; font-weight: 700; font-size: 26px; border-bottom: 1.5px solid var(--line); padding-bottom: 6px; }
+  .tester { background: #fffaf0; border: 1px solid var(--line); padding: 20px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 14px; font-size: 14px; color: var(--muted); }
+  .controls label { display: flex; gap: 6px; align-items: center; }
+  .hint { font-size: 14px; color: var(--muted); margin: -4px 0 12px; }
+  .note { font-size: 13px; color: var(--muted); }
+  .tribute { margin: 0 0 18px; padding: 14px 18px; border-left: 3px solid var(--ink); font-family: "Naemkung", monospace; font-size: 20px; line-height: 1.6; }
+  .bio td:first-child { white-space: nowrap; width: 84px; }
+  h3 { font-size: 17px; margin: 28px 0 10px; }
+  .small { font: inherit; font-size: 13px; padding: 4px 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+  .paper { position: relative; min-height: 260px; padding: 28px 30px; cursor: text;
+           background: #fdfaf2 repeating-linear-gradient(0deg, transparent 0 2px, rgba(120,100,60,0.025) 2px 3px);
+           box-shadow: 0 1px 0 var(--line), 0 6px 18px rgba(60,40,10,0.08); }
+  .mirror, .paper textarea { font-family: "Naemkung", monospace; font-size: 34px; line-height: 1.6;
+           white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; padding: 0; letter-spacing: 0; }
+  .mirror { color: var(--ink); pointer-events: none; min-height: 1.6em; }
+  .mirror span.hit { animation: strike 0.12s ease-out; }
+  @keyframes strike { from { filter: blur(0.6px); opacity: 0.4; } to { filter: none; } }
+  .paper textarea { position: absolute; inset: 28px 30px; width: calc(100% - 60px); height: calc(100% - 56px);
+           border: none; outline: none; resize: none; background: transparent; color: transparent;
+           caret-color: var(--accent); overflow: hidden; }
+  .zzim { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .zzim-count { font-family: "Naemkung", monospace; font-size: 20px; color: var(--accent); }
+  .specimen { font-size: 30px; line-height: 1.6; }
+  .specimen p { margin: 0 0 10px; overflow-wrap: anywhere; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: #fffaf0; border: 1px solid var(--line); padding: 16px 18px; }
+  .card .name { font-size: 13px; color: var(--muted); }
+  .card .show { font-size: 34px; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .ok { color: #2f6b3a; font-weight: 700; }
+  .no { color: var(--accent); font-weight: 700; }
+  pre { background: #fffaf0; border: 1px solid var(--line); padding: 14px; overflow-x: auto; font-size: 13px; }
+  img { max-width: 100%; border: 1px solid var(--line); }
+  @media (max-width: 600px) { .paper { padding: 18px 16px; } .paper textarea { inset: 18px 16px; width: calc(100% - 32px); height: calc(100% - 36px); } .specimen { font-size: 22px; } }
+  footer { margin-top: 72px; font-size: 13px; color: var(--muted); }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>냄쿵타자기</h1>
+    <p class="en">Naemkung Typewriter</p>
+    <p class="lead"><span class="free">완전 무료</span>수동 공병우식 타자기에 반해 취미로 만든 한글·영문 서체입니다. 개인이든 회사든, 상업 용도까지 누구나 무료로 쓸 수 있습니다.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/naemkung-company/naemkung-typewriter/archive/refs/heads/main.zip">전체 내려받기 (zip)</a>
+      <a class="btn" href="fonts/NaemkungTypewriter-Regular.ttf" download>Regular</a>
+      <a class="btn" href="fonts/NaemkungTypewriter-Bold.ttf" download>Bold</a>
+      <a class="btn" href="fonts/NaemkungTypewriter-Clean.ttf" download>Clean</a>
+      <a class="btn" href="https://github.com/naemkung-company/naemkung-typewriter">GitHub</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>직접 쳐 보기</h2>
+    <p class="hint">종이를 누르고 자판으로 쳐 보세요. 글자마다 잉크가 조금씩 다르게 묻습니다.</p>
+    <div class="tester">
+      <div class="controls">
+        <label>굵기
+          <select id="weight">
+            <option value="400">Regular</option>
+            <option value="700">Bold</option>
+            <option value="clean">Clean</option>
+          </select>
+        </label>
+        <label>크기 <input id="size" type="range" min="16" max="72" value="34"></label>
+        <label><input id="sound" type="checkbox" checked> 타자 소리</label>
+        <button type="button" id="another" class="small">다른 문장</button>
+        <button type="button" id="clear" class="small">새 종이</button>
+      </div>
+      <div class="paper" id="paper">
+        <div class="mirror" id="mirror" aria-hidden="true"></div>
+        <textarea id="input" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="냄쿵타자기로 쳐 보기"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>찜콩</h2>
+    <div class="zzim">
+      <a class="btn primary" id="zzim" href="https://github.com/naemkung-company/naemkung-typewriter" target="_blank" rel="noopener">♥ 잘 쓰고 가요 (찜콩)</a>
+      <span id="zzimCount" class="zzim-count"></span>
+    </div>
+    <p class="hint">GitHub 저장소에 별(★)을 누르면 찜콩이 하나 늘어납니다. GitHub 계정이 있어야 누를 수 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>세 가지 굵기</h2>
+    <div class="grid">
+      <div class="card"><div class="name">Regular — 자모마다 따로 내려친 듯 조금씩 흔들린다</div><div class="show tw">타자기 Aa</div></div>
+      <div class="card"><div class="name">Bold — 활자를 세게 친 굵은 판</div><div class="show tw" style="font-weight:700">타자기 Aa</div></div>
+      <div class="card"><div class="name">Clean — 흔들림 없이 매끈한 판</div><div class="show" style="font-family:'NaemkungClean',monospace">타자기 Aa</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>견본</h2>
+    <div class="specimen tw">
+      <p>동해 물과 백두산이 마르고 닳도록</p>
+      <p>아이묭단 출격! 아이묭은 내한 한번 더 해달라.</p>
+      <p>추천곡은 3636</p>
+      <p>The quick brown fox jumps over the lazy dog.</p>
+      <p>0O 1Il 5S 8B (a+b)*2=? "quote" #@$%&amp;</p>
+    </div>
+    <p>종이에 찍힌 모습을 흉내 낸 그림입니다. 위에서부터 새 리본, 낡은 리본, Bold 를 세게 친 모습입니다.</p>
+    <img src="images/sample.png" alt="타자 출력 질감 견본: 새 리본, 낡은 리본, Bold">
+  </section>
+
+  <section>
+    <h2>어떤 글꼴인가요</h2>
+    <p>1950~70년대 세벌식(공병우식) 수동 타자기는 초성·중성·종성 활자를 정해진 높이에 따로 내려쳤습니다. 그래서 모든 글자의 윗선은 가지런하고, 아랫선은 모음과 받침에 따라 들쭉날쭉합니다. 냄쿵타자기는 이 「탈네모꼴」 모양과 활자가 종이를 친 자국을 닮게 만들었습니다.</p>
+    <p>다른 글꼴 파일이나 윤곽을 가져다 쓰지 않았습니다. 글자마다 획이 지나가는 선을 코드로 적고, 그 선에 굵기를 입혀 만들었습니다. 만드는 코드도 저장소에 함께 공개합니다.</p>
+    <ul>
+      <li>현대 한글 11,172자, 한글 자모 51자, 영문·숫자·기호(ASCII)</li>
+      <li>고정폭: 영문 한 칸, 한글 한 칸이 각각 같은 너비</li>
+      <li>0 은 가운데 점, 1·I·l 은 모양을 달리해 헷갈리지 않음</li>
+    </ul>
+  </section>
+
+  <section id="tribute">
+    <h2>공병우 박사를 기리며</h2>
+    <p class="tribute">한글을 네모 틀에 가두지 않고, 생긴 대로 빠르게.</p>
+    <p>냄쿵타자기의 들쭉날쭉한 아랫선은 공병우 박사(1907~1995)의 세벌식 타자기에서 왔습니다. 공병우 박사는 우리나라 첫 안과 전문 의원을 연 안과 의사였습니다. 그런데 평생을 걸고 매달린 일은 한글을 기계로 빠르고 바르게 쓰는 길을 여는 것이었습니다.</p>
+    <p>그가 만든 세벌식 타자기는 초성·중성·종성을 따로 쳐서, 글자를 네모 틀에 억지로 맞추지 않고 한글이 생긴 대로 찍어 냈습니다. 모양이 고르지 않다며 「빨랫줄 글꼴」라는 놀림도 받았지만, 바로 그 속도와 정확함이 한글 기계화의 바탕이 되었습니다. 눈을 고치던 의사는 앞을 보지 못하는 사람을 위한 점자 타자기를 만들었고, 여든을 앞둔 나이에 매킨토시로 컴퓨터 세벌식 한글을 일구었습니다.</p>
+    <p>세상을 떠나면서는 자신의 죽음을 알리지 말고 장례식도 치르지 말라고 했습니다. 쓸 만한 장기와 시신은 기증하고, 남은 재산은 앞을 보지 못하는 사람들을 위해 쓰라고 남겼습니다. 이 글꼴은 그 마음에 보내는 작은 감사 편지입니다.</p>
+    <h3>약력</h3>
+    <table class="bio">
+      <tr><th>연도</th><th>일</th></tr>
+      <tr><td>1907</td><td>평안북도 벽동군에서 태어남(1월 24일)</td></tr>
+      <tr><td>1926</td><td>조선 의사 검정 시험 합격</td></tr>
+      <tr><td>1936</td><td>나고야 제국대학 의학박사</td></tr>
+      <tr><td>1938</td><td>공안과 개원 — 우리나라 첫 안과 전문 의원</td></tr>
+      <tr><td>1949</td><td>최초의 실용 세벌식 한글 타자기 개발, 국회의장상</td></tr>
+      <tr><td>1958</td><td>콘택트렌즈 첫 도입 시술, 한글 타자기 발명 공로로 대통령 표창</td></tr>
+      <tr><td>1959</td><td>한글학회 이사</td></tr>
+      <tr><td>1968</td><td>기계식 한영 겸용 타자기 발명</td></tr>
+      <tr><td>1971</td><td>기계식 한글 점자 타자기 개발</td></tr>
+      <tr><td>1974</td><td>외솔 문화상</td></tr>
+      <tr><td>1981</td><td>국민훈장 석류장</td></tr>
+      <tr><td>1980년대</td><td>세벌식 글자판을 미국 교포 사회에 보급, 매킨토시로 세벌식 글자꼴과 입력기 개발을 이끌고 젊은 개발자들을 도움</td></tr>
+      <tr><td>1987</td><td>제1회 서재필 상</td></tr>
+      <tr><td>1988</td><td>한글문화원 개설</td></tr>
+      <tr><td>1990</td><td>은관문화훈장</td></tr>
+      <tr><td>1995</td><td>3월 7일 세상을 떠남, 시신은 의학 교육에 기증. 금관문화훈장 추서</td></tr>
+    </table>
+    <p class="note">약력은 위키백과 「공병우」 문서를 따랐습니다. 태어난 해는 문서 안에 1906년으로 적힌 곳도 있습니다.</p>
+    <h3>더 알아보기</h3>
+    <ul>
+      <li><a href="https://ko.wikipedia.org/wiki/%EA%B3%B5%EB%B3%91%EC%9A%B0" target="_blank" rel="noopener">위키백과 — 공병우</a></li>
+      <li><a href="https://ko.wikipedia.org/wiki/%EC%84%B8%EB%B2%8C%EC%8B%9D_%EC%9E%90%ED%8C%90" target="_blank" rel="noopener">위키백과 — 세벌식 자판</a></li>
+      <li><a href="https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B8%80_%ED%83%80%EC%9E%90%EA%B8%B0" target="_blank" rel="noopener">위키백과 — 한글 타자기</a></li>
+      <li><a href="https://theme.archives.go.kr/next/koreaOfRecord/typewriter.do" target="_blank" rel="noopener">국가기록원 — 한글 타자기 이야기</a></li>
+    </ul>
+    <p class="note">냄쿵타자기는 개인이 취미로 만든 글꼴이며, 공병우 박사의 유족이나 관련 단체의 후원·승인을 받지 않았습니다.</p>
+  </section>
+
+  <section>
+    <h2>라이선스 — SIL Open Font License 1.1</h2>
+    <table>
+      <tr><th>이렇게 써도 되나요?</th><th></th></tr>
+      <tr><td>문서·인쇄물·영상·포스터·로고·웹사이트에 사용</td><td class="ok">됩니다</td></tr>
+      <tr><td>회사·상업 용도로 사용</td><td class="ok">됩니다</td></tr>
+      <tr><td>앱·게임·제품에 글꼴 파일을 넣어 배포</td><td class="ok">됩니다 (라이선스 파일 동봉)</td></tr>
+      <tr><td>고쳐서 새 글꼴로 배포</td><td class="ok">됩니다 (새 글꼴도 OFL 로)</td></tr>
+      <tr><td>글꼴 파일만 따로 돈 받고 판매</td><td class="no">안 됩니다</td></tr>
+    </table>
+    <p>원문은 <a href="OFL.txt">OFL.txt</a>, 자세한 설명은 <a href="https://openfontlicense.org">openfontlicense.org</a> 에 있습니다. 출처 표기는 필수가 아니지만 남겨 주시면 기쁩니다.</p>
+    <p>다른 글꼴의 데이터를 쓰지 않고 코드로만 만들었습니다. 공병우 박사나 관련 단체와는 관계가 없습니다. 만든 방법과 권리 침해 신고 방법은 <a href="NOTICE.md">권리 고지</a>에 있습니다.</p>
+    <p>베끼지 않았다는 증거도 공개합니다. 공개된 코드로 누구나 글꼴을 다시 만들면 배포 파일과 바이트 하나까지 같은 파일이 나오고, GitHub 가 올릴 때마다 이를 자동으로 확인합니다. 한글 글꼴 16종과 글자 2,412자를 겹쳐 비교한 결과도 함께 공개합니다. 자세한 내용은 <a href="PROVENANCE.md">원본 증명</a>에 있습니다.</p>
+  </section>
+
+  <section id="contact">
+    <h2>연락</h2>
+    <p>칭찬, 재미있는 제안, 이 글꼴로 만든 작품 자랑은 언제든 환영합니다. 메일 <a href="mailto:jaykafka12@gmail.com?subject=%EB%83%84%EC%BF%B5%ED%83%80%EC%9E%90%EA%B8%B0">jaykafka12@gmail.com</a> 로 보내 주세요.</p>
+    <p class="note">글자 모양 오류나 권리 관련 문제는 기록이 남도록 <a href="https://github.com/naemkung-company/naemkung-typewriter/issues">GitHub Issues</a> 에 올려 주시면 더 빨리 확인합니다.</p>
+  </section>
+
+  <section>
+    <h2>웹에서 쓰기</h2>
+<pre>@font-face {
+  font-family: "Naemkung Typewriter";
+  src: url("NaemkungTypewriter-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Naemkung Typewriter";
+  src: url("NaemkungTypewriter-Bold.ttf") format("truetype");
+  font-weight: 700;
+}</pre>
+  </section>
+
+  <footer>
+    냄쿵타자기 0.33 · © 2026 냄쿵콤파니 · SIL OFL 1.1 · <a href="NOTICE.md">권리 고지</a> · <a href="mailto:jaykafka12@gmail.com">연락</a>
+  </footer>
+</main>
+<script>
+  const SENTENCES = [
+    "지금부터 시작한다. 4-2!! 4-2!!",
+    "엄밀히 말해, 이건 그냥 돋보기다!",
+    "엄마가 와도 된대, 어 허락 받았어, 어 엄마 데려간다?",
+    "야 내가 너네 앞에서만 이렇게 하는 거야",
+    "나 믿지 말라고, 추억의 유행어인데",
+    "이제는 너무 고전이어서 유행어 말하기 대회에도 안 나옴",
+    "정확히.. 틀렸다. 아니, 맞았다.",
+    "강원도는 노상관",
+    "일본 토막상식은 하루에 한 번만 해라",
+    "왕의 운명, 왕의 소변, 왕의 영업",
+    "낼 어디 몇 시? 낼어몇!",
+    "그건 블루투스 샤워기 같은 얘기에요",
+    "아! 아... 일부러 그러지",
+    "1인 2실 쓰기도 하니까 뭐 이해해",
+    "데피니션이 틀리면 침묵하기도 함",
+    "The quick brown fox jumps over the lazy dog. 0123456789"
+  ];
+  const input = document.getElementById("input");
+  const mirror = document.getElementById("mirror");
+  const paper = document.getElementById("paper");
+  const weight = document.getElementById("weight");
+  const size = document.getElementById("size");
+  const sound = document.getElementById("sound");
+  let last = "";
+  let pick = Math.floor(Math.random() * SENTENCES.length);
+
+  // 같은 자리 같은 글자는 늘 같은 잉크가 묻도록 위치와 글자로 값을 정한다.
+  function ink(i, ch) {
+    let h = (i + 1) * 2654435761 ^ ch.codePointAt(0) * 40503;
+    h = (h ^ (h >>> 13)) >>> 0;
+    return 0.72 + (h % 1000) / 1000 * 0.28;
+  }
+  function render() {
+    const text = input.value;
+    const frag = document.createDocumentFragment();
+    const chars = Array.from(text);
+    chars.forEach((ch, i) => {
+      const span = document.createElement("span");
+      span.textContent = ch;
+      if (ch.trim()) span.style.opacity = ink(i, ch).toFixed(2);
+      if (i === chars.length - 1 && text.length > last.length) span.className = "hit";
+      frag.appendChild(span);
+    });
+    frag.appendChild(document.createTextNode("​"));
+    mirror.replaceChildren(frag);
+    last = text;
+    paper.style.minHeight = Math.max(260, mirror.offsetHeight + 60) + "px";
+  }
+
+  // 타자 소리: 짧은 잡음(활자), 줄 바꿈은 낮은 소리 두 번(캐리지).
+  let ctx = null;
+  function click(kind) {
+    if (!sound.checked) return;
+    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+    const len = kind === "return" ? 0.18 : 0.035;
+    const buf = ctx.createBuffer(1, ctx.sampleRate * len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, kind === "return" ? 2 : 6);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const f = ctx.createBiquadFilter();
+    f.type = "bandpass";
+    f.frequency.value = kind === "return" ? 600 : kind === "space" ? 900 : 1800 + Math.random() * 600;
+    const g = ctx.createGain();
+    g.gain.value = kind === "return" ? 0.5 : 0.8;
+    src.connect(f).connect(g).connect(ctx.destination);
+    src.start();
+  }
+  input.addEventListener("keydown", (e) => {
+    if (e.isComposing && e.key !== "Process") return;
+    if (e.key === "Enter") click("return");
+    else if (e.key === " ") click("space");
+    else if (e.key.length === 1 || e.key === "Process" || e.key === "Backspace") click("key");
+  });
+  input.addEventListener("input", render);
+  paper.addEventListener("click", () => input.focus());
+
+  function apply() {
+    const w = weight.value;
+    const family = w === "clean" ? '"NaemkungClean", monospace' : '"Naemkung", monospace';
+    for (const el of [input, mirror]) {
+      el.style.fontFamily = family;
+      el.style.fontWeight = w === "clean" ? 400 : w;
+      el.style.fontSize = size.value + "px";
+    }
+    render();
+  }
+  function another() {
+    pick = (pick + 1 + Math.floor(Math.random() * (SENTENCES.length - 1))) % SENTENCES.length;
+    input.value = SENTENCES[pick];
+    last = input.value;
+    render();
+  }
+  weight.addEventListener("change", apply);
+  size.addEventListener("input", apply);
+  document.getElementById("another").addEventListener("click", another);
+  document.getElementById("clear").addEventListener("click", () => { input.value = ""; last = ""; render(); input.focus(); });
+  input.value = SENTENCES[pick];
+  last = input.value;
+  apply();
+  if (document.fonts) document.fonts.ready.then(render);
+
+  // 찜콩 수 = GitHub 별 수. 불러오지 못하면 숫자 없이 버튼만 둔다.
+  fetch("https://api.github.com/repos/naemkung-company/naemkung-typewriter")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => { if (j) document.getElementById("zzimCount").textContent = "찜콩 " + j.stargazers_count + "개"; })
+    .catch(() => {});
+</script>
+</body>
+</html>
