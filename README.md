@@ -113,6 +113,7 @@ python3 preview.py build/NaemkungTypewriter-Regular.ttf sample.png   # 견본 �
 
 ## 판 기록
 
+- 0.34 (2026-11-08) ㅛ·ㅠ 가 받침과 함께 쓰일 때 ㅗ·ㅜ 처럼 보이던 문제 수정(묭·윰 등)
 - 0.33 (2026-11-08) 첫 공개판
 
 ---

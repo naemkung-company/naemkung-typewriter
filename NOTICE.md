@@ -21,7 +21,7 @@ Copyright 2026 Naemkung Company
 
 ○ 증거는 공개한다
 
-코드로 배포 파일과 같은 파일을 다시 만드는 재현 빌드, 기존 한글 글꼴 16종과의 모양 비교, 0.1 부터 0.33 까지의 판별 기록을 [PROVENANCE.md](PROVENANCE.md) 에 모았다.
+코드로 배포 파일과 같은 파일을 다시 만드는 재현 빌드, 기존 한글 글꼴 16종과의 모양 비교, 0.1 부터 0.34 까지의 판별 기록을 [PROVENANCE.md](PROVENANCE.md) 에 모았다.
 
 ## 이름
 

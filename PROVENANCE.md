@@ -6,7 +6,7 @@
 |---|---|---|
 | 1. 재현 빌드 | 배포한 글꼴 파일이 공개한 코드에서만 나온다 | 코드를 돌려 `SHA256SUMS` 와 비교, GitHub Actions 기록 |
 | 2. 모양 비교 | 기존 한글 글꼴과 글자 모양이 겹치지 않는다 | `source/compare_fonts.py`, `provenance/similarity.json` |
-| 3. 만든 과정 | 0.1 부터 0.33 까지 고쳐 온 과정이 남아 있다 | `provenance/history.png`, 아래 판별 기록 |
+| 3. 만든 과정 | 0.1 부터 0.34 까지 고쳐 온 과정이 남아 있다 | `provenance/history.png`, 아래 판별 기록 |
 
 ## 1. 재현 빌드 — 코드에서 같은 파일이 나온다
 
@@ -34,9 +34,9 @@ cd source/build && shasum -a 256 -c ../../SHA256SUMS
 
 | 파일 | SHA-256 |
 |---|---|
-| `NaemkungTypewriter-Regular.ttf` | `f0907a953584ce1c244b5c4ee380ddebe231f8d030ebb3ed7d1a945d38089a96` |
-| `NaemkungTypewriter-Clean.ttf` | `f9d67ca909338b792473a37817c777163beee551e2e23608d919bd8bc6df9379` |
-| `NaemkungTypewriter-Bold.ttf` | `1e2d191ad37237a2b1659ca1ad8d5c5ba49caa005551b8868a5aef73c92d7154` |
+| `NaemkungTypewriter-Regular.ttf` | `faafd57acd4a035926bc5b28395c27a48f47e4b487af1c233d283cc05954c961` |
+| `NaemkungTypewriter-Clean.ttf` | `2a8fc01c515f1a8e6f7ccccc70b470504e53691a45228990aeb5b2a4b8f9b160` |
+| `NaemkungTypewriter-Bold.ttf` | `ca657d6b7322fb9d7ab81d0baa25c61d62fb4e2a0e7efbd53d1fcd5509969a1e` |
 
 ## 2. 모양 비교 — 기존 한글 글꼴과 겹치지 않는다
 
@@ -50,26 +50,26 @@ cd source/build && shasum -a 256 -c ../../SHA256SUMS
 
 | 비교 대상 | 한글 평균 | 한글 최고 | 0.8 이상 글자 수 |
 |---|---|---|---|
-| **기준선: 냄쿵타자기 Clean** | **0.851** | **0.960** | **2,084** |
-| **기준선: 냄쿵타자기 Bold** | **0.770** | **0.942** | **510** |
-| Jua | 0.374 | 0.689 | 0 |
-| Do Hyeon | 0.355 | 0.585 | 0 |
-| IBM Plex Sans KR | 0.295 | 0.616 | 0 |
-| Apple SD Gothic Neo | 0.292 | 0.583 | 0 |
-| Nanum Gothic Coding | 0.287 | 0.581 | 0 |
-| Nanum Gothic | 0.282 | 0.554 | 0 |
-| Hahmlet | 0.281 | 0.585 | 0 |
-| AppleGothic | 0.268 | 0.562 | 0 |
-| Gowun Dodum | 0.253 | 0.554 | 0 |
-| Song Myung | 0.249 | 0.523 | 0 |
-| Nanum Myeongjo | 0.209 | 0.479 | 0 |
-| Gowun Batang | 0.206 | 0.460 | 0 |
-| Nanum Pen Script | 0.203 | 0.478 | 0 |
-| AppleMyungjo | 0.192 | 0.448 | 0 |
-| Noto Sans KR | 0.176 | 0.364 | 0 |
-| Nanum Brush Script | 0.166 | 0.447 | 0 |
+| **기준선: 냄쿵타자기 Clean** | **0.846** | **0.956** | **1,987** |
+| **기준선: 냄쿵타자기 Bold** | **0.768** | **0.910** | **479** |
+| Jua | 0.346 | 0.723 | 0 |
+| Do Hyeon | 0.331 | 0.765 | 0 |
+| IBM Plex Sans KR | 0.271 | 0.613 | 0 |
+| Apple SD Gothic Neo | 0.270 | 0.630 | 0 |
+| Nanum Gothic Coding | 0.266 | 0.541 | 0 |
+| Hahmlet | 0.262 | 0.628 | 0 |
+| Nanum Gothic | 0.259 | 0.518 | 0 |
+| AppleGothic | 0.240 | 0.598 | 0 |
+| Gowun Dodum | 0.234 | 0.485 | 0 |
+| Song Myung | 0.226 | 0.477 | 0 |
+| Nanum Pen Script | 0.204 | 0.504 | 0 |
+| Gowun Batang | 0.193 | 0.408 | 0 |
+| Nanum Myeongjo | 0.192 | 0.429 | 0 |
+| AppleMyungjo | 0.176 | 0.394 | 0 |
+| Nanum Brush Script | 0.168 | 0.494 | 0 |
+| Noto Sans KR | 0.165 | 0.362 | 0 |
 
-기존 글꼴 16종 모두 0.8 을 넘는 글자가 한 자도 없다. 한글 평균은 0.17~0.37 로 기준선(0.77~0.85)과 크게 떨어져 있다. 영문까지 넣어도 가장 높은 값은 0.753(Nanum Gothic Coding 의 `V`)이고, 이는 획 두 개로 된 단순한 글자라 어느 글꼴이든 비슷하게 나오는 경우다.
+기존 글꼴 16종 모두 0.8 을 넘는 글자가 한 자도 없다. 한글 평균은 0.17~0.35 로 기준선(0.77~0.85)과 크게 떨어져 있다. 영문까지 합쳐 가장 높은 값은 0.765(Do Hyeon 의 `료`)로, 획이 적고 모양이 단순한 글자라 어느 글꼴이든 비슷하게 나오는 경우다.
 
 글꼴마다 가장 닮게 나온 한글을 나란히 그렸다. 가장 닮은 글자도 획 모양과 비례가 다르다.
 
@@ -92,7 +92,7 @@ python source/compare_fonts.py --ours fonts/NaemkungTypewriter-Regular.ttf \
 
 모양 비교는 위 16종에 대해서만 했다. 판매 중인 상용 글꼴은 파일을 구할 수 없어 넣지 못했다. 특정 글꼴과 닮았다는 의견이 있으면 GitHub Issues 로 알려 주기 바란다. 같은 방법으로 비교해 결과를 이 문서에 더한다.
 
-## 3. 만든 과정 — 0.1 부터 0.33 까지
+## 3. 만든 과정 — 0.1 부터 0.34 까지
 
 ○ 판별 기록
 
@@ -107,7 +107,8 @@ python source/compare_fonts.py --ours fonts/NaemkungTypewriter-Regular.ttf \
 | 0.3 | 2026-11-08 18:20 | 획 굵기 차이, 둥근 잉크 끝, 거친 가장자리 | `4fc76ab4af6e09cd5c7dc988e12e5e30df22a5ba2bd27480bfe958659b9ed023` |
 | 0.31 | 2026-11-08 18:27 | 중심선 흐트러뜨림 시험(0.32 에서 되돌림) | `f96146064f389810d8e8c4313656baeb636d4e4dfc0034cb1e6361eb8709cd52` |
 | 0.32 | 2026-11-08 18:32 | 기울기 제거, 획 머리·끝 모양으로 손맛 | `0111901f30bc22b1c84aa13458de4ad7e6f3b48dbdea65c3b3352ea98e58ec86` |
-| 0.33 | 2026-11-08 | 내림획 끝 가늘기 조정, 이름 확정, Bold 추가, 첫 공개 | 위 1절 표 |
+| 0.33 | 2026-11-08 | 내림획 끝 가늘기 조정, 이름 확정, Bold 추가, 첫 공개 | Regular `f0907a953584ce1c244b5c4ee380ddebe231f8d030ebb3ed7d1a945d38089a96` |
+| 0.34 | 2026-11-08 | ㅗ·ㅛ 가로획을 내리고 가로·섞인 모음의 받침 자리를 낮춤(묭이 몽으로, 윰의 ㅠ 다리가 받침에 붙어 보이던 문제) | 위 1절 표 |
 
 0.1~0.32 는 작업 이름(RoomType 1984)으로 만든 시안이라 공개하지 않았다. 파일은 그대로 보관하고 있고, 위 SHA-256 값으로 보관본이 이 기록과 같은 파일임을 확인할 수 있다.
 
@@ -120,5 +121,5 @@ python source/compare_fonts.py --ours fonts/NaemkungTypewriter-Regular.ttf \
 ## Provenance (English)
 
 - **Reproducible build.** `source/build_font.py` reads no font files; every glyph is generated from stroke centerlines written in the code. Build timestamps are fixed, so the three fonts can be rebuilt byte-for-byte (`SHA256SUMS`). The `reproduce` GitHub Actions workflow rebuilds them on macOS and Linux on every push and compares them with `fonts/`.
-- **Shape comparison.** 2,412 glyphs (KS X 1001 Hangul + Latin letters and digits) were compared with 16 Korean fonts using bitmap IoU. Our own Clean/Bold variants score a Hangul mean of 0.77–0.85, while all 16 other fonts score 0.17–0.37, and none has a single glyph at IoU ≥ 0.8. See `provenance/similarity.json` and `source/compare_fonts.py`.
+- **Shape comparison.** 2,412 glyphs (KS X 1001 Hangul + Latin letters and digits) were compared with 16 Korean fonts using bitmap IoU. Our own Clean/Bold variants score a Hangul mean of 0.77–0.85, while all 16 other fonts score 0.17–0.35, and none has a single glyph at IoU ≥ 0.8. See `provenance/similarity.json` and `source/compare_fonts.py`.
 - **Development history.** Drafts 0.1–0.32 with embedded build times and SHA-256 hashes are listed above (`provenance/history.png`). The drafts are archived privately and can be produced on request.

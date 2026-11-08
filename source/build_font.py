@@ -511,10 +511,11 @@ STEM_TOP, STEM_BOTTOM = 760, 190  # 세로 모음 기둥(중심선)
 JONG_BOX = {
     ("V", False): (100, 20, 500, 300),
     ("V", True): (60, 20, 600, 300),
-    ("H", False): (100, -30, 540, 250),
-    ("H", True): (60, -30, 640, 250),
-    ("M", False): (100, -30, 540, 250),
-    ("M", True): (60, -30, 600, 250),
+    # 가로·섞인 모음의 받침은 ㅜ·ㅠ 다리가 받침과 붙지 않도록 낮게 둔다(0.34).
+    ("H", False): (100, -130, 540, 150),
+    ("H", True): (60, -130, 640, 150),
+    ("M", False): (100, -130, 540, 150),
+    ("M", True): (60, -130, 600, 150),
 }
 # 가로 모음만 있는 음절은 폭이 좁아 가운데로 민다.
 CLASS_DX = {"V": 0, "H": 110, "M": 0}
@@ -562,9 +563,10 @@ def _v_vowel(v: str) -> list[Stroke]:
 
 
 # 가로 모음: 가로획 y, 기둥 끝 y(초성 쪽 또는 아래쪽)
+# ㅗ·ㅛ 기둥은 초성 아래로 잉크 100 이상 보여야 ㅛ 두 줄이 읽힌다(0.34, 묭이 몽으로 보임).
 _H_SHAPES = {
-    "ㅗ": (380, 440),
-    "ㅛ": (380, 440),
+    "ㅗ": (305, 440),
+    "ㅛ": (305, 440),
     "ㅜ": (410, 290),
     "ㅠ": (410, 290),
     "ㅡ": (395, None),
@@ -1143,7 +1145,7 @@ def build(clean: bool, bold: bool = False) -> Path:
             "uniqueFontIdentifier": f"NaemkungTypewriter-{style};2026",
             "fullName": {lang: f"{name} {style}" for lang, name in family.items()},
             "psName": f"NaemkungTypewriter-{style}",
-            "version": "Version 0.330",
+            "version": "Version 0.340",
             "copyright": {
                 "en": "Copyright 2026 Naemkung Company",
                 "ko": "Copyright 2026 냄쿵콤파니",

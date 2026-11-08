@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 LINES = [
     "오늘도 나의 작은 방에 편지를 남긴다. 1984",
-    "아이묭단 출격! 아이묭은 내한 한번 더 해달라.",
+    "아이묭단 출격! 아이묭은 내한 한 번 더 해 달라.",
     "추천곡은 3636",
     "밑줄 친 문장 · 말랑이와 함께 읽는 밤",
     "The quick brown fox jumps over the lazy dog.",
