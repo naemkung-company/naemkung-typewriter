@@ -4,6 +4,8 @@
 
 소개·직접 쳐 보기·내려받기: https://naemkung-company.github.io/naemkung-typewriter/
 
+English: https://naemkung-company.github.io/naemkung-typewriter/en/ · [English README](#naemkung-typewriter)
+
 ![냄쿵타자기 견본](images/specimen.png)
 
 ## 특징
@@ -125,3 +127,17 @@ A completely free Korean/Latin monospaced typeface, made as a hobby out of love 
 Licensed under the [SIL Open Font License 1.1](OFL.txt): free for personal and commercial use, embedding, and modification. The font files alone may not be sold, and modified fonts must stay under the OFL.
 
 Copyright 2026 Naemkung Company. Glyphs are generated from stroke definitions in `source/build_font.py`; no third-party font data is used. See [NOTICE.md](NOTICE.md).
+
+Website (English): https://naemkung-company.github.io/naemkung-typewriter/en/ — type with the font in your browser, download, and read the tribute.
+
+## Provenance
+
+Anyone can rebuild the fonts from `source/` and get byte-identical files (`SHA256SUMS`); a GitHub Actions workflow checks this on macOS and Linux on every push. An outline-overlap (IoU) comparison against 16 Korean fonts over 2,412 glyphs is published in [PROVENANCE.md](PROVENANCE.md).
+
+## In memory of Dr. Kong Byung-woo
+
+The ragged bottom line of this typeface comes from the three-set (Sebeolsik) typewriter of Dr. Kong Byung-woo (1907–1995), an ophthalmologist who opened Korea's first specialist eye clinic and devoted his life to mechanizing Hangul. He also built a Hangul Braille typewriter and, in his eighties, led Sebeolsik Hangul computing on the Macintosh. This project is not sponsored or endorsed by his family or any related organization. Full timeline on the [English page](https://naemkung-company.github.io/naemkung-typewriter/en/#tribute).
+
+## Contact
+
+Compliments, fun suggestions and things you made with the font: jaykafka12@gmail.com. Glyph bugs and rights issues: [GitHub Issues](https://github.com/naemkung-company/naemkung-typewriter/issues).

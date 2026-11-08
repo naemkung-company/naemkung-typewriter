@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naemkung Typewriter — a free Hangul typeface inspired by the Kong Byung-woo typewriter</title>
+<meta name="description" content="A completely free Korean and Latin typeface inspired by the manual three-set Hangul typewriter. Free for anyone, including commercial use (SIL OFL 1.1).">
+<meta property="og:title" content="Naemkung Typewriter (냄쿵타자기)">
+<meta property="og:description" content="A free Hangul typewriter typeface, made as a hobby. SIL OFL 1.1.">
+<meta property="og:image" content="../images/specimen.png">
+<link rel="alternate" hreflang="ko" href="https://naemkung-company.github.io/naemkung-typewriter/">
+<link rel="alternate" hreflang="en" href="https://naemkung-company.github.io/naemkung-typewriter/en/">
+<style>
+  @font-face { font-family: "Naemkung"; src: url("../fonts/NaemkungTypewriter-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Naemkung"; src: url("../fonts/NaemkungTypewriter-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+  @font-face { font-family: "NaemkungClean"; src: url("../fonts/NaemkungTypewriter-Clean.ttf") format("truetype"); font-display: swap; }
+  :root { --paper: #f6f1e4; --ink: #1a1816; --muted: #6b645a; --line: #d9d0bc; --accent: #8a2b1f; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink);
+         font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; line-height: 1.7; }
+  main { max-width: 920px; margin: 0 auto; padding: 56px 24px 80px; }
+  .tw { font-family: "Naemkung", monospace; }
+  header h1 { font-family: "Naemkung", monospace; font-weight: 700; font-size: clamp(48px, 10vw, 96px); line-height: 1.1; margin: 0 0 8px; letter-spacing: 0.02em; }
+  header .en { font-family: "Naemkung", monospace; color: var(--muted); font-size: 20px; margin: 0 0 24px; }
+  header .lead { font-size: 18px; margin: 0 0 28px; }
+  .free { display: inline-block; border: 2px solid var(--accent); color: var(--accent); padding: 2px 10px; font-weight: 700; transform: rotate(-2deg); margin-right: 8px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-block; padding: 10px 18px; border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; font-family: "Naemkung", monospace; font-size: 16px; background: #fffaf0; }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn:hover { transform: translateY(-1px); }
+  section { margin-top: 64px; }
+  h2 { font-family: "Naemkung", monospace; font-weight: 700; font-size: 26px; border-bottom: 1.5px solid var(--line); padding-bottom: 6px; }
+  .tester { background: #fffaf0; border: 1px solid var(--line); padding: 20px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 14px; font-size: 14px; color: var(--muted); }
+  .controls label { display: flex; gap: 6px; align-items: center; }
+  .hint { font-size: 14px; color: var(--muted); margin: -4px 0 12px; }
+  .note { font-size: 13px; color: var(--muted); }
+  .tribute { margin: 0 0 18px; padding: 14px 18px; border-left: 3px solid var(--ink); font-family: "Naemkung", monospace; font-size: 20px; line-height: 1.6; }
+  .bio td:first-child { white-space: nowrap; width: 84px; }
+  h3 { font-size: 17px; margin: 28px 0 10px; }
+  .small { font: inherit; font-size: 13px; padding: 4px 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; }
+  .paper { position: relative; min-height: 260px; padding: 28px 30px; cursor: text;
+           background: #fdfaf2 repeating-linear-gradient(0deg, transparent 0 2px, rgba(120,100,60,0.025) 2px 3px);
+           box-shadow: 0 1px 0 var(--line), 0 6px 18px rgba(60,40,10,0.08); }
+  .mirror, .paper textarea { font-family: "Naemkung", monospace; font-size: 34px; line-height: 1.6;
+           white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; padding: 0; letter-spacing: 0; }
+  .mirror { color: var(--ink); pointer-events: none; min-height: 1.6em; }
+  .mirror span.hit { animation: strike 0.12s ease-out; }
+  @keyframes strike { from { filter: blur(0.6px); opacity: 0.4; } to { filter: none; } }
+  .paper textarea { position: absolute; inset: 28px 30px; width: calc(100% - 60px); height: calc(100% - 56px);
+           border: none; outline: none; resize: none; background: transparent; color: transparent;
+           caret-color: var(--accent); overflow: hidden; }
+  .zzim { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .zzim-count { font-family: "Naemkung", monospace; font-size: 20px; color: var(--accent); }
+  .specimen { font-size: 30px; line-height: 1.6; }
+  .specimen p { margin: 0 0 10px; overflow-wrap: anywhere; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: #fffaf0; border: 1px solid var(--line); padding: 16px 18px; }
+  .card .name { font-size: 13px; color: var(--muted); }
+  .card .show { font-size: 34px; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .ok { color: #2f6b3a; font-weight: 700; }
+  .no { color: var(--accent); font-weight: 700; }
+  pre { background: #fffaf0; border: 1px solid var(--line); padding: 14px; overflow-x: auto; font-size: 13px; }
+  img { max-width: 100%; border: 1px solid var(--line); }
+  @media (max-width: 600px) { .paper { padding: 18px 16px; } .paper textarea { inset: 18px 16px; width: calc(100% - 32px); height: calc(100% - 36px); } .specimen { font-size: 22px; } }
+  footer { margin-top: 72px; font-size: 13px; color: var(--muted); }
+  a { color: var(--accent); }
+  .lang { text-align: right; font-size: 14px; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="lang"><a href="../" hreflang="ko" lang="ko">한국어</a> · <strong>English</strong></nav>
+  <header>
+    <h1>냄쿵타자기</h1>
+    <p class="en">Naemkung Typewriter</p>
+    <p class="lead"><span class="free">100% free</span>A Korean–Latin typeface inspired by the manual Kong Byung-woo three-set Hangul typewriter, made as a hobby. Anyone — individuals or companies — may use it for free, including commercial use.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://github.com/naemkung-company/naemkung-typewriter/archive/refs/heads/main.zip">Download all (zip)</a>
+      <a class="btn" href="../fonts/NaemkungTypewriter-Regular.ttf" download>Regular</a>
+      <a class="btn" href="../fonts/NaemkungTypewriter-Bold.ttf" download>Bold</a>
+      <a class="btn" href="../fonts/NaemkungTypewriter-Clean.ttf" download>Clean</a>
+      <a class="btn" href="https://github.com/naemkung-company/naemkung-typewriter">GitHub</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Try typing</h2>
+    <p class="hint">Click the paper and type. Every character picks up a slightly different amount of ink. Korean input works too.</p>
+    <div class="tester">
+      <div class="controls">
+        <label>Weight
+          <select id="weight">
+            <option value="400">Regular</option>
+            <option value="700">Bold</option>
+            <option value="clean">Clean</option>
+          </select>
+        </label>
+        <label>Size <input id="size" type="range" min="16" max="72" value="34"></label>
+        <label><input id="sound" type="checkbox" checked> Typing sound</label>
+        <button type="button" id="another" class="small">Another sentence</button>
+        <button type="button" id="clear" class="small">New sheet</button>
+      </div>
+      <div class="paper" id="paper">
+        <div class="mirror" id="mirror" aria-hidden="true"></div>
+        <textarea id="input" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Type with Naemkung Typewriter"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Like it?</h2>
+    <div class="zzim">
+      <a class="btn primary" id="zzim" href="https://github.com/naemkung-company/naemkung-typewriter" target="_blank" rel="noopener">♥ I used it, thanks</a>
+      <span id="zzimCount" class="zzim-count"></span>
+    </div>
+    <p class="hint">Starring (★) the GitHub repository adds one to this count. A GitHub account is required.</p>
+  </section>
+
+  <section>
+    <h2>Three styles</h2>
+    <div class="grid">
+      <div class="card"><div class="name">Regular — each jamo struck separately, slightly uneven</div><div class="show tw">타자기 Aa</div></div>
+      <div class="card"><div class="name">Bold — type struck hard</div><div class="show tw" style="font-weight:700">타자기 Aa</div></div>
+      <div class="card"><div class="name">Clean — smooth, no wobble</div><div class="show" style="font-family:'NaemkungClean',monospace">타자기 Aa</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Specimen</h2>
+    <div class="specimen tw">
+      <p>동해 물과 백두산이 마르고 닳도록</p>
+      <p>아이묭단 출격! 아이묭은 내한 한 번 더 해 달라.</p>
+      <p>추천곡은 3636</p>
+      <p>The quick brown fox jumps over the lazy dog.</p>
+      <p>0O 1Il 5S 8B (a+b)*2=? "quote" #@$%&amp;</p>
+    </div>
+    <p class="note">The Korean lines: the opening of the Korean national anthem; "Aimyon fan squad, go! Aimyon, please come to Korea once more."; "Recommended song: 3636".</p>
+    <p>A simulation of how the type looks on paper. From top: new ribbon, worn ribbon, Bold struck hard.</p>
+    <img src="../images/sample.png" alt="Typed-texture specimen: new ribbon, worn ribbon, Bold">
+  </section>
+
+  <section>
+    <h2>About the typeface</h2>
+    <p>Korean three-set (Kong Byung-woo style) manual typewriters of the 1950s–70s struck the initial consonant, vowel and final consonant as separate pieces of type at fixed heights. As a result the top line of every syllable is even, while the bottom line rises and falls with the vowel and final consonant. Naemkung Typewriter follows this "out-of-the-square" (탈네모꼴) shape and the marks that type leaves on paper.</p>
+    <p>No other font files or outlines were used. The path of every stroke is written in code and then given weight. The build code is published in the repository together with the fonts.</p>
+    <ul>
+      <li>All 11,172 modern Hangul syllables, 51 Hangul jamo, Latin letters, digits and symbols (ASCII)</li>
+      <li>Monospaced: every Latin cell is the same width, and every Hangul cell is the same width</li>
+      <li>Dotted zero; 1, I and l are drawn differently so they are easy to tell apart</li>
+    </ul>
+  </section>
+
+  <section id="tribute">
+    <h2>In memory of Dr. Kong Byung-woo</h2>
+    <p class="tribute">Don't force Hangul into a square box — type it as it is, and type it fast.</p>
+    <p>The uneven bottom line of Naemkung Typewriter comes from the three-set typewriter of Dr. Kong Byung-woo (1907–1995). Dr. Kong was an ophthalmologist who opened Korea's first specialist eye clinic. Yet the work he devoted his life to was opening the way for Hangul to be written by machine, quickly and correctly.</p>
+    <p>His three-set typewriter typed the initial, medial and final parts separately, so Hangul was printed as it is naturally shaped instead of being squeezed into a square frame. People mocked its uneven look as a "clothesline font", but that very speed and accuracy became the foundation of Hangul mechanization. The doctor who healed eyes built a Braille typewriter for blind people, and at nearly eighty he cultivated three-set Hangul computing on the Macintosh.</p>
+    <p>When he died, he asked that his death not be announced and that no funeral be held. He donated his usable organs and his body, and left the rest of his estate to help blind people. This typeface is a small thank-you letter to that spirit.</p>
+    <h3>Timeline</h3>
+    <table class="bio">
+      <tr><th>Year</th><th>Event</th></tr>
+      <tr><td>1907</td><td>Born in Byeokdong County, North Pyongan Province (January 24)</td></tr>
+      <tr><td>1926</td><td>Passed the Joseon medical licensing examination</td></tr>
+      <tr><td>1936</td><td>Doctor of Medicine, Nagoya Imperial University</td></tr>
+      <tr><td>1938</td><td>Opened Kong Eye Clinic — Korea's first specialist eye clinic</td></tr>
+      <tr><td>1949</td><td>Developed the first practical three-set Hangul typewriter; Speaker of the National Assembly Award</td></tr>
+      <tr><td>1958</td><td>Performed Korea's first contact-lens fittings; Presidential Commendation for inventing the Hangul typewriter</td></tr>
+      <tr><td>1959</td><td>Director of the Korean Language Society (한글학회)</td></tr>
+      <tr><td>1968</td><td>Invented a mechanical Korean–English typewriter</td></tr>
+      <tr><td>1971</td><td>Developed a mechanical Hangul Braille typewriter</td></tr>
+      <tr><td>1974</td><td>Oesol Culture Award</td></tr>
+      <tr><td>1981</td><td>Order of Civil Merit, Seongnyu Medal</td></tr>
+      <tr><td>1980s</td><td>Spread the three-set keyboard among Korean communities in the U.S.; led development of three-set Hangul fonts and input methods on the Macintosh and supported young developers</td></tr>
+      <tr><td>1987</td><td>1st Philip Jaisohn (Seo Jae-pil) Award</td></tr>
+      <tr><td>1988</td><td>Founded the Hangul Culture Institute (한글문화원)</td></tr>
+      <tr><td>1990</td><td>Order of Cultural Merit, Silver Crown</td></tr>
+      <tr><td>1995</td><td>Died on March 7; his body was donated for medical education. Posthumously awarded the Order of Cultural Merit, Gold Crown</td></tr>
+    </table>
+    <p class="note">The timeline follows the Korean Wikipedia article "공병우". Some places in that article give his birth year as 1906. Award names are translated by us.</p>
+    <h3>Further reading</h3>
+    <ul>
+      <li><a href="https://ko.wikipedia.org/wiki/%EA%B3%B5%EB%B3%91%EC%9A%B0" target="_blank" rel="noopener">Korean Wikipedia — Kong Byung-woo (공병우)</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Hangul_typewriter" target="_blank" rel="noopener">Wikipedia — Hangul typewriter</a></li>
+      <li><a href="https://ko.wikipedia.org/wiki/%EC%84%B8%EB%B2%8C%EC%8B%9D_%EC%9E%90%ED%8C%90" target="_blank" rel="noopener">Korean Wikipedia — Three-set keyboard (세벌식 자판)</a></li>
+      <li><a href="https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B8%80_%ED%83%80%EC%9E%90%EA%B8%B0" target="_blank" rel="noopener">Korean Wikipedia — Hangul typewriter (한글 타자기)</a></li>
+      <li><a href="https://theme.archives.go.kr/next/koreaOfRecord/typewriter.do" target="_blank" rel="noopener">National Archives of Korea — The story of the Hangul typewriter (Korean)</a></li>
+    </ul>
+    <p class="note">Naemkung Typewriter is a hobby project by an individual. It is not sponsored or endorsed by Dr. Kong's family or any related organization.</p>
+  </section>
+
+  <section>
+    <h2>License — SIL Open Font License 1.1</h2>
+    <table>
+      <tr><th>Can I…</th><th></th></tr>
+      <tr><td>use it in documents, print, video, posters, logos and websites?</td><td class="ok">Yes</td></tr>
+      <tr><td>use it for company or commercial work?</td><td class="ok">Yes</td></tr>
+      <tr><td>bundle the font files in an app, game or product?</td><td class="ok">Yes (include the license file)</td></tr>
+      <tr><td>modify it and release a new font?</td><td class="ok">Yes (the new font must also be OFL)</td></tr>
+      <tr><td>sell the font files by themselves?</td><td class="no">No</td></tr>
+    </table>
+    <p>Full text: <a href="../OFL.txt">OFL.txt</a>. Explanation: <a href="https://openfontlicense.org">openfontlicense.org</a>. Credit is not required, but it makes us happy.</p>
+    <p>The fonts were made only from code, without data from any other font. We are not affiliated with Dr. Kong or any related organization. How the fonts were made and how to report a rights issue are described in the <a href="../NOTICE.md">rights notice</a>.</p>
+    <p>We also publish proof that nothing was copied. Anyone who rebuilds the fonts from the published code gets files identical to the released ones, byte for byte, and GitHub checks this automatically on every push. We also publish an overlap comparison against 16 Korean fonts across 2,412 characters. Details are in the <a href="../PROVENANCE.md">provenance record</a>.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Compliments, fun suggestions and showing off what you made with the font are always welcome. Email <a href="mailto:jaykafka12@gmail.com?subject=Naemkung%20Typewriter">jaykafka12@gmail.com</a>.</p>
+    <p class="note">For glyph bugs or rights issues, please open a <a href="https://github.com/naemkung-company/naemkung-typewriter/issues">GitHub Issue</a> so there is a record — we will see it sooner.</p>
+  </section>
+
+  <section>
+    <h2>Use on the web</h2>
+<pre>@font-face {
+  font-family: "Naemkung Typewriter";
+  src: url("NaemkungTypewriter-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Naemkung Typewriter";
+  src: url("NaemkungTypewriter-Bold.ttf") format("truetype");
+  font-weight: 700;
+}</pre>
+  </section>
+
+  <footer>
+    Naemkung Typewriter 0.34 · © 2026 Naemkung Company · SIL OFL 1.1 · <a href="../NOTICE.md">Rights notice</a> · <a href="mailto:jaykafka12@gmail.com">Contact</a>
+  </footer>
+</main>
+<script>
+  const SENTENCES = [
+    "The quick brown fox jumps over the lazy dog. 0123456789",
+    "Pack my box with five dozen liquor jugs.",
+    "Hello from a 1950s Hangul typewriter!",
+    "Type it as it is, and type it fast.",
+    "Every key leaves a little more or less ink.",
+    "Clack, clack, ding! New line.",
+    "안녕하세요, 냄쿵타자기입니다.",
+    "동해 물과 백두산이 마르고 닳도록",
+    "아이묭단 출격! 추천곡은 3636"
+  ];
+  const input = document.getElementById("input");
+  const mirror = document.getElementById("mirror");
+  const paper = document.getElementById("paper");
+  const weight = document.getElementById("weight");
+  const size = document.getElementById("size");
+  const sound = document.getElementById("sound");
+  let last = "";
+  let pick = Math.floor(Math.random() * SENTENCES.length);
+
+  // Same character at the same position always gets the same ink.
+  function ink(i, ch) {
+    let h = (i + 1) * 2654435761 ^ ch.codePointAt(0) * 40503;
+    h = (h ^ (h >>> 13)) >>> 0;
+    return 0.72 + (h % 1000) / 1000 * 0.28;
+  }
+  function render() {
+    const text = input.value;
+    const frag = document.createDocumentFragment();
+    const chars = Array.from(text);
+    chars.forEach((ch, i) => {
+      const span = document.createElement("span");
+      span.textContent = ch;
+      if (ch.trim()) span.style.opacity = ink(i, ch).toFixed(2);
+      if (i === chars.length - 1 && text.length > last.length) span.className = "hit";
+      frag.appendChild(span);
+    });
+    frag.appendChild(document.createTextNode("​"));
+    mirror.replaceChildren(frag);
+    last = text;
+    paper.style.minHeight = Math.max(260, mirror.offsetHeight + 60) + "px";
+  }
+
+  // Typing sound: short noise for a key, low sound for the carriage return.
+  let ctx = null;
+  function click(kind) {
+    if (!sound.checked) return;
+    ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+    const len = kind === "return" ? 0.18 : 0.035;
+    const buf = ctx.createBuffer(1, ctx.sampleRate * len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, kind === "return" ? 2 : 6);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const f = ctx.createBiquadFilter();
+    f.type = "bandpass";
+    f.frequency.value = kind === "return" ? 600 : kind === "space" ? 900 : 1800 + Math.random() * 600;
+    const g = ctx.createGain();
+    g.gain.value = kind === "return" ? 0.5 : 0.8;
+    src.connect(f).connect(g).connect(ctx.destination);
+    src.start();
+  }
+  input.addEventListener("keydown", (e) => {
+    if (e.isComposing && e.key !== "Process") return;
+    if (e.key === "Enter") click("return");
+    else if (e.key === " ") click("space");
+    else if (e.key.length === 1 || e.key === "Process" || e.key === "Backspace") click("key");
+  });
+  input.addEventListener("input", render);
+  paper.addEventListener("click", () => input.focus());
+
+  function apply() {
+    const w = weight.value;
+    const family = w === "clean" ? '"NaemkungClean", monospace' : '"Naemkung", monospace';
+    for (const el of [input, mirror]) {
+      el.style.fontFamily = family;
+      el.style.fontWeight = w === "clean" ? 400 : w;
+      el.style.fontSize = size.value + "px";
+    }
+    render();
+  }
+  function another() {
+    pick = (pick + 1 + Math.floor(Math.random() * (SENTENCES.length - 1))) % SENTENCES.length;
+    input.value = SENTENCES[pick];
+    last = input.value;
+    render();
+  }
+  weight.addEventListener("change", apply);
+  size.addEventListener("input", apply);
+  document.getElementById("another").addEventListener("click", another);
+  document.getElementById("clear").addEventListener("click", () => { input.value = ""; last = ""; render(); input.focus(); });
+  input.value = SENTENCES[pick];
+  last = input.value;
+  apply();
+  if (document.fonts) document.fonts.ready.then(render);
+
+  // Like count = GitHub stars. If it fails to load, show the button only.
+  fetch("https://api.github.com/repos/naemkung-company/naemkung-typewriter")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => { if (j) document.getElementById("zzimCount").textContent = "★ " + j.stargazers_count; })
+    .catch(() => {});
+</script>
+</body>
+</html>
