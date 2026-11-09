@@ -1145,7 +1145,7 @@ def build(clean: bool, bold: bool = False) -> Path:
             "uniqueFontIdentifier": f"NaemkungTypewriter-{style};2026",
             "fullName": {lang: f"{name} {style}" for lang, name in family.items()},
             "psName": f"NaemkungTypewriter-{style}",
-            "version": "Version 0.340",
+            "version": "Version 0.350",
             "copyright": {
                 "en": "Copyright 2026 Naemkung Company",
                 "ko": "Copyright 2026 냄쿵콤파니",

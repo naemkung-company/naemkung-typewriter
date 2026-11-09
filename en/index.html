@@ -14,7 +14,7 @@
   @font-face { font-family: "Naemkung"; src: url("../fonts/NaemkungTypewriter-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
   @font-face { font-family: "Naemkung"; src: url("../fonts/NaemkungTypewriter-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
   @font-face { font-family: "NaemkungClean"; src: url("../fonts/NaemkungTypewriter-Clean.ttf") format("truetype"); font-display: swap; }
-  @font-face { font-family: "NaemkungText"; src: url("../fonts/NaemkungTypewriterText-Regular.ttf") format("truetype"); font-display: swap; }
+  @font-face { font-family: "NaemkungText"; src: url("../fonts/NaemkungTypewriter-Text.ttf") format("truetype"); font-display: swap; }
   :root { --paper: #f6f1e4; --ink: #1a1816; --muted: #6b645a; --line: #d9d0bc; --accent: #8a2b1f; }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--paper); color: var(--ink);
@@ -84,7 +84,7 @@
       <a class="btn" href="../fonts/NaemkungTypewriter-Regular.ttf" download>Regular</a>
       <a class="btn" href="../fonts/NaemkungTypewriter-Bold.ttf" download>Bold</a>
       <a class="btn" href="../fonts/NaemkungTypewriter-Clean.ttf" download>Clean</a>
-      <a class="btn" href="../fonts/NaemkungTypewriterText-Regular.ttf" download>Text</a>
+      <a class="btn" href="../fonts/NaemkungTypewriter-Text.ttf" download>Text</a>
       <a class="btn" href="https://github.com/naemkung-company/naemkung-typewriter">GitHub</a>
     </div>
   </header>
@@ -134,8 +134,8 @@
   </section>
 
   <section id="text">
-    <h2>Text style (Naemkung Typewriter Text)</h2>
-    <p>The out-of-the-square shape works well for titles and short lines, but in long passages the uneven bottom line tires the eye. Final consonants under horizontal vowels (곡, 굴, 원) sank to the depth of Latin descenders and looked like subscripts. The Text style keeps the same strokes and consonant shapes, but re-lays out each syllable for long reading.</p>
+    <h2>Text style (new in 0.35)</h2>
+    <p>The out-of-the-square shape works well for titles and short lines, but in long passages the uneven bottom line tires the eye. Final consonants under horizontal vowels (곡, 굴, 원) sank to the depth of Latin descenders and looked like subscripts. Version 0.35 adds the Text style to Naemkung Typewriter. It keeps the same strokes and consonant shapes, but re-lays out each syllable for long reading.</p>
     <ul>
       <li>When a syllable has a final consonant, the initial and vowel move up and the final grows, so bottom lines are far more even (semi-square)</li>
       <li>Narrower Hangul cells and larger initials, so the gap between letters differs clearly from the gap between words</li>
@@ -147,7 +147,7 @@
       <p>“올해는 꼭 끝까지 읽어 보자.” 오늘 밤은 길고, 커피는 아직 따뜻했다…</p>
     </div>
     <img src="../images/text_sample.png" alt="Regular and Text compared: the same paragraph set in both styles">
-    <p class="hint">The Text style is a first release (0.1). If any letter feels awkward to read, please let us know via <a href="#contact">Contact</a>.</p>
+    <p class="hint">The Text style first appeared in 0.35. If any letter feels awkward to read, please let us know via <a href="#contact">Contact</a>.</p>
   </section>
 
   <section>
@@ -247,13 +247,13 @@
   font-weight: 700;
 }
 @font-face {
-  font-family: "Naemkung Typewriter Text";
-  src: url("NaemkungTypewriterText-Regular.ttf") format("truetype");
+  font-family: "Naemkung Typewriter Text"; /* Text style */
+  src: url("NaemkungTypewriter-Text.ttf") format("truetype");
 }</pre>
   </section>
 
   <footer>
-    Naemkung Typewriter 0.34 · Text 0.1 · © 2026 Naemkung Company · SIL OFL 1.1 · <a href="../NOTICE.md">Rights notice</a> · <a href="mailto:jaykafka12@gmail.com">Contact</a>
+    Naemkung Typewriter 0.35 · © 2026 Naemkung Company · SIL OFL 1.1 · <a href="../NOTICE.md">Rights notice</a> · <a href="mailto:jaykafka12@gmail.com">Contact</a>
   </footer>
 </main>
 <script>

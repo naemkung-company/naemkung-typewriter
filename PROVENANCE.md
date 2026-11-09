@@ -6,13 +6,13 @@
 |---|---|---|
 | 1. 재현 빌드 | 배포한 글꼴 파일이 공개한 코드에서만 나온다 | 코드를 돌려 `SHA256SUMS` 와 비교, GitHub Actions 기록 |
 | 2. 모양 비교 | 기존 한글 글꼴과 글자 모양이 겹치지 않는다 | `source/compare_fonts.py`, `provenance/similarity.json` |
-| 3. 만든 과정 | 0.1 부터 0.34 까지 고쳐 온 과정이 남아 있다 | `provenance/history.png`, 아래 판별 기록 |
+| 3. 만든 과정 | 0.1 부터 0.35 까지 고쳐 온 과정이 남아 있다 | `provenance/history.png`, 아래 판별 기록 |
 
 ## 1. 재현 빌드 — 코드에서 같은 파일이 나온다
 
 ○ 글꼴 파일은 코드의 결과물이다
 
-`source/build_font.py` 는 다른 글꼴 파일을 하나도 읽지 않는다. 글자마다 획이 지나가는 중심선 좌표가 코드에 적혀 있고, 이 선에 굵기를 입혀 윤곽을 만든다. 한글은 초성·중성·종성 부품을 한 벌씩 그린 뒤 11,172 음절을 부품 조합으로 만든다. 위치·굵기의 흔들림도 글자 이름에서 계산한 고정값(SHA-256)이라 실행할 때마다 같다.
+`source/build_font.py` 와 본문 판을 만드는 `source/build_text.py` 는 다른 글꼴 파일을 하나도 읽지 않는다. 글자마다 획이 지나가는 중심선 좌표가 코드에 적혀 있고, 이 선에 굵기를 입혀 윤곽을 만든다. 한글은 초성·중성·종성 부품을 한 벌씩 그린 뒤 11,172 음절을 부품 조합으로 만든다. 위치·굵기의 흔들림도 글자 이름에서 계산한 고정값(SHA-256)이라 실행할 때마다 같다.
 
 글꼴 안에 들어가는 만든 시각도 2026-11-08 00:00 UTC 로 고정했다. 그래서 같은 코드와 같은 `fontTools` 판으로 만들면 배포 파일과 바이트 하나까지 같은 파일이 나온다. 다른 글꼴의 윤곽을 가져다 쓴 글꼴이라면 코드만으로 같은 파일을 만들어 낼 수 없다.
 
@@ -23,10 +23,11 @@ pip install -r source/requirements-build.txt
 python source/build_font.py
 python source/build_font.py --clean
 python source/build_font.py --bold
+python source/build_text.py
 cd source/build && shasum -a 256 -c ../../SHA256SUMS
 ```
 
-세 줄 모두 `OK` 가 나오면 배포 파일과 같다.
+네 줄 모두 `OK` 가 나오면 배포 파일과 같다.
 
 ○ GitHub 가 올릴 때마다 확인한다
 
@@ -34,9 +35,10 @@ cd source/build && shasum -a 256 -c ../../SHA256SUMS
 
 | 파일 | SHA-256 |
 |---|---|
-| `NaemkungTypewriter-Regular.ttf` | `faafd57acd4a035926bc5b28395c27a48f47e4b487af1c233d283cc05954c961` |
-| `NaemkungTypewriter-Clean.ttf` | `2a8fc01c515f1a8e6f7ccccc70b470504e53691a45228990aeb5b2a4b8f9b160` |
-| `NaemkungTypewriter-Bold.ttf` | `ca657d6b7322fb9d7ab81d0baa25c61d62fb4e2a0e7efbd53d1fcd5509969a1e` |
+| `NaemkungTypewriter-Regular.ttf` | `be2e17a2241c227f3f35d54012c9e5e6a9681275dd5d2d8b9f533fd52310a957` |
+| `NaemkungTypewriter-Clean.ttf` | `d72ff36b8d6b5583953f2b295de096552dd4e3f898492e4413f55be89669aa3c` |
+| `NaemkungTypewriter-Bold.ttf` | `3ab54a646363644937f330aa17d60dc4cc5c25353aa5da3559d85e1f0595bac5` |
+| `NaemkungTypewriter-Text.ttf` | `38a44d30f39b5fee0fc20cc1d4d475e40c8932a7b3996b97c2ea7286cd64378a` |
 
 ## 2. 모양 비교 — 기존 한글 글꼴과 겹치지 않는다
 
@@ -92,7 +94,7 @@ python source/compare_fonts.py --ours fonts/NaemkungTypewriter-Regular.ttf \
 
 모양 비교는 위 16종에 대해서만 했다. 판매 중인 상용 글꼴은 파일을 구할 수 없어 넣지 못했다. 특정 글꼴과 닮았다는 의견이 있으면 GitHub Issues 로 알려 주기 바란다. 같은 방법으로 비교해 결과를 이 문서에 더한다.
 
-## 3. 만든 과정 — 0.1 부터 0.34 까지
+## 3. 만든 과정 — 0.1 부터 0.35 까지
 
 ○ 판별 기록
 
@@ -108,7 +110,8 @@ python source/compare_fonts.py --ours fonts/NaemkungTypewriter-Regular.ttf \
 | 0.31 | 2026-11-08 18:27 | 중심선 흐트러뜨림 시험(0.32 에서 되돌림) | `f96146064f389810d8e8c4313656baeb636d4e4dfc0034cb1e6361eb8709cd52` |
 | 0.32 | 2026-11-08 18:32 | 기울기 제거, 획 머리·끝 모양으로 손맛 | `0111901f30bc22b1c84aa13458de4ad7e6f3b48dbdea65c3b3352ea98e58ec86` |
 | 0.33 | 2026-11-08 | 내림획 끝 가늘기 조정, 이름 확정, Bold 추가, 첫 공개 | Regular `f0907a953584ce1c244b5c4ee380ddebe231f8d030ebb3ed7d1a945d38089a96` |
-| 0.34 | 2026-11-08 | ㅗ·ㅛ 가로획을 내리고 가로·섞인 모음의 받침 자리를 낮춤(묭이 몽으로, 윰의 ㅠ 다리가 받침에 붙어 보이던 문제) | 위 1절 표 |
+| 0.34 | 2026-11-08 | ㅗ·ㅛ 가로획을 내리고 가로·섞인 모음의 받침 자리를 낮춤(묭이 몽으로, 윰의 ㅠ 다리가 받침에 붙어 보이던 문제) | Regular `faafd57acd4a035926bc5b28395c27a48f47e4b487af1c233d283cc05954c961` |
+| 0.35 | 2026-11-10 | 긴 글 읽기용 본문(Text) 판 추가(반네모 짜임). Regular·Bold·Clean 은 판 번호만 올림, 글자 모양은 0.34 와 같음 | 위 1절 표 |
 
 0.1~0.32 는 작업 이름(RoomType 1984)으로 만든 시안이라 공개하지 않았다. 파일은 그대로 보관하고 있고, 위 SHA-256 값으로 보관본이 이 기록과 같은 파일임을 확인할 수 있다.
 

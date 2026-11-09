@@ -14,7 +14,7 @@
   @font-face { font-family: "Naemkung"; src: url("fonts/NaemkungTypewriter-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
   @font-face { font-family: "Naemkung"; src: url("fonts/NaemkungTypewriter-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
   @font-face { font-family: "NaemkungClean"; src: url("fonts/NaemkungTypewriter-Clean.ttf") format("truetype"); font-display: swap; }
-  @font-face { font-family: "NaemkungText"; src: url("fonts/NaemkungTypewriterText-Regular.ttf") format("truetype"); font-display: swap; }
+  @font-face { font-family: "NaemkungText"; src: url("fonts/NaemkungTypewriter-Text.ttf") format("truetype"); font-display: swap; }
   :root { --paper: #f6f1e4; --ink: #1a1816; --muted: #6b645a; --line: #d9d0bc; --accent: #8a2b1f; }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--paper); color: var(--ink);
@@ -84,7 +84,7 @@
       <a class="btn" href="fonts/NaemkungTypewriter-Regular.ttf" download>Regular</a>
       <a class="btn" href="fonts/NaemkungTypewriter-Bold.ttf" download>Bold</a>
       <a class="btn" href="fonts/NaemkungTypewriter-Clean.ttf" download>Clean</a>
-      <a class="btn" href="fonts/NaemkungTypewriterText-Regular.ttf" download>본문</a>
+      <a class="btn" href="fonts/NaemkungTypewriter-Text.ttf" download>본문</a>
       <a class="btn" href="https://github.com/naemkung-company/naemkung-typewriter">GitHub</a>
     </div>
   </header>
@@ -134,8 +134,8 @@
   </section>
 
   <section id="text">
-    <h2>본문 판 (냄쿵타자기 본문)</h2>
-    <p>탈네모꼴은 제목과 짧은 글에서는 맛이 살지만, 책처럼 긴 글에서는 줄이 들쭉날쭉해 눈이 쉽게 지칩니다. 특히 「곡·굴·원」처럼 가로 모음 아래 받침이 영문 꼬리 높이까지 내려가 아랫첨자처럼 보였습니다. 본문 판은 같은 획과 자음 모양을 쓰되, 긴 글을 읽기 좋게 짜임을 다시 잡았습니다.</p>
+    <h2>본문 판 (Text, 0.35 추가)</h2>
+    <p>탈네모꼴은 제목과 짧은 글에서는 맛이 살지만, 책처럼 긴 글에서는 줄이 들쭉날쭉해 눈이 쉽게 지칩니다. 특히 「곡·굴·원」처럼 가로 모음 아래 받침이 영문 꼬리 높이까지 내려가 아랫첨자처럼 보였습니다. 0.35 에서 냄쿵타자기에 본문 판을 더했습니다. 같은 획과 자음 모양을 쓰되, 긴 글을 읽기 좋게 짜임을 다시 잡았습니다.</p>
     <ul>
       <li>받침이 있으면 초성·모음을 위로 올리고 받침을 키워, 글자마다 아랫선 차이를 크게 줄였습니다(반네모꼴)</li>
       <li>한글 칸을 좁히고 초성을 키워, 글자 사이와 낱말 사이가 구분되게 했습니다</li>
@@ -147,7 +147,7 @@
       <p>“올해는 꼭 끝까지 읽어 보자.” 오늘 밤은 길고, 커피는 아직 따뜻했다…</p>
     </div>
     <img src="images/text_sample.png" alt="Regular 와 본문 판 비교: 같은 문단을 두 판으로 짠 모습">
-    <p class="hint">본문 판은 아직 첫 판(0.1)입니다. 읽다가 불편한 글자가 있으면 <a href="#contact">연락</a>으로 알려 주세요.</p>
+    <p class="hint">본문 판은 0.35 에서 처음 나온 판입니다. 읽다가 불편한 글자가 있으면 <a href="#contact">연락</a>으로 알려 주세요.</p>
   </section>
 
   <section>
@@ -245,13 +245,13 @@
   font-weight: 700;
 }
 @font-face {
-  font-family: "Naemkung Typewriter Text";
-  src: url("NaemkungTypewriterText-Regular.ttf") format("truetype");
+  font-family: "Naemkung Typewriter Text"; /* 본문 판 */
+  src: url("NaemkungTypewriter-Text.ttf") format("truetype");
 }</pre>
   </section>
 
   <footer>
-    냄쿵타자기 0.34 · 본문 0.1 · © 2026 냄쿵콤파니 · SIL OFL 1.1 · <a href="NOTICE.md">권리 고지</a> · <a href="mailto:jaykafka12@gmail.com">연락</a>
+    냄쿵타자기 0.35 · © 2026 냄쿵콤파니 · SIL OFL 1.1 · <a href="NOTICE.md">권리 고지</a> · <a href="mailto:jaykafka12@gmail.com">연락</a>
   </footer>
 </main>
 <script>

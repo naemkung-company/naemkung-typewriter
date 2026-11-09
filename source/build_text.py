@@ -1,7 +1,7 @@
-"""냄쿵타자기 본문(Naemkung Typewriter Text) 서체를 만든다. 책 본문처럼 긴 글을 읽기 위한 판이다.
+"""냄쿵타자기의 본문(Text) 판을 만든다. 책 본문처럼 긴 글을 읽기 위한 판이다(0.35 에서 추가).
 
-본편 생성기 build_font.py(0.34 에서 동결)는 고치지 않는다. 획 그리기·자음 모양·영문은
-그대로 가져다 쓰고, 이 파일은 책 본문용 배치만 새로 정한다.
+Regular·Bold·Clean 생성기 build_font.py 의 글자 모양은 0.34 에서 동결했다(0.35 는 판 번호만 올림).
+획 그리기·자음 모양·영문은 그대로 가져다 쓰고, 이 파일은 책 본문용 배치만 새로 정한다.
 
 본편과 다른 점(2026-11-10 견본 A~E 비교 결과):
 - 반네모: 받침 유무에 따라 초성·모음 자리를 바꿔 음절 아랫선 차이를 390 → 약 150 으로 줄인다.
@@ -10,7 +10,7 @@
 - 매끈한 윤곽(흔들림·거칠기 없음), 획 대비를 40% 로 줄이고 굵기 64.
 - 책에 자주 나오는 “ ” ‘ ’ … — 「 」 『 』 를 더하고, 마침표·쉼표 칸을 좁힌다.
 
-실행: python3 build_text.py   # build/NaemkungTypewriterText-Regular.ttf
+실행: python3 build_text.py   # build/NaemkungTypewriter-Text.ttf
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ from fontTools.pens.ttGlyphPen import TTGlyphPen
 
 line, path, Stroke = bf.line, bf.path, bf.Stroke
 
-VERSION = "Version 0.100"
+VERSION = "Version 0.350"
 OUT_DIR = Path(__file__).resolve().parent / "build"
 ADVANCE = 800
 WEIGHT = 64
@@ -232,14 +232,15 @@ def save(glyphs: dict, advances: dict, cmap: dict) -> Path:
         metrics[n] = (advances[n], getattr(glyf[n], "xMin", 0))
     fb.setupHorizontalMetrics(metrics)
     fb.setupHorizontalHeader(ascent=bf.ASCENT, descent=bf.DESCENT, lineGap=0)
-    family = {"en": "Naemkung Typewriter Text", "ko": "냄쿵타자기 본문"}
+    family = {"en": "Naemkung Typewriter", "ko": "냄쿵타자기"}
+    style = {"en": "Text", "ko": "본문"}
     fb.setupNameTable(
         {
             "familyName": family,
-            "styleName": "Regular",
-            "uniqueFontIdentifier": "NaemkungTypewriterText-Regular;2026",
-            "fullName": {lang: f"{name} Regular" for lang, name in family.items()},
-            "psName": "NaemkungTypewriterText-Regular",
+            "styleName": style,
+            "uniqueFontIdentifier": "NaemkungTypewriter-Text;2026",
+            "fullName": {lang: f"{name} {style[lang]}" for lang, name in family.items()},
+            "psName": "NaemkungTypewriter-Text",
             "version": VERSION,
             "copyright": {"en": "Copyright 2026 Naemkung Company", "ko": "Copyright 2026 냄쿵콤파니"},
             "manufacturer": {"en": "Naemkung Company", "ko": "냄쿵콤파니"},
@@ -270,7 +271,7 @@ def save(glyphs: dict, advances: dict, cmap: dict) -> Path:
     )
     fb.setupPost(keepGlyphNames=False, isFixedPitch=0)
     OUT_DIR.mkdir(exist_ok=True)
-    out = OUT_DIR / "NaemkungTypewriterText-Regular.ttf"
+    out = OUT_DIR / "NaemkungTypewriter-Text.ttf"
     fb.font["head"].created = bf.BUILD_TIMESTAMP
     fb.font["head"].modified = bf.BUILD_TIMESTAMP
     fb.font.recalcTimestamp = False
