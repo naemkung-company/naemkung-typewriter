@@ -14,6 +14,7 @@
   @font-face { font-family: "Naemkung"; src: url("fonts/NaemkungTypewriter-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
   @font-face { font-family: "Naemkung"; src: url("fonts/NaemkungTypewriter-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
   @font-face { font-family: "NaemkungClean"; src: url("fonts/NaemkungTypewriter-Clean.ttf") format("truetype"); font-display: swap; }
+  @font-face { font-family: "NaemkungText"; src: url("fonts/NaemkungTypewriterText-Regular.ttf") format("truetype"); font-display: swap; }
   :root { --paper: #f6f1e4; --ink: #1a1816; --muted: #6b645a; --line: #d9d0bc; --accent: #8a2b1f; }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--paper); color: var(--ink);
@@ -83,6 +84,7 @@
       <a class="btn" href="fonts/NaemkungTypewriter-Regular.ttf" download>Regular</a>
       <a class="btn" href="fonts/NaemkungTypewriter-Bold.ttf" download>Bold</a>
       <a class="btn" href="fonts/NaemkungTypewriter-Clean.ttf" download>Clean</a>
+      <a class="btn" href="fonts/NaemkungTypewriterText-Regular.ttf" download>본문</a>
       <a class="btn" href="https://github.com/naemkung-company/naemkung-typewriter">GitHub</a>
     </div>
   </header>
@@ -97,6 +99,7 @@
             <option value="400">Regular</option>
             <option value="700">Bold</option>
             <option value="clean">Clean</option>
+            <option value="text">본문</option>
           </select>
         </label>
         <label>크기 <input id="size" type="range" min="16" max="72" value="34"></label>
@@ -121,12 +124,30 @@
   </section>
 
   <section>
-    <h2>세 가지 굵기</h2>
+    <h2>네 가지 판</h2>
     <div class="grid">
       <div class="card"><div class="name">Regular — 자모마다 따로 내려친 듯 조금씩 흔들린다</div><div class="show tw">타자기 Aa</div></div>
       <div class="card"><div class="name">Bold — 활자를 세게 친 굵은 판</div><div class="show tw" style="font-weight:700">타자기 Aa</div></div>
       <div class="card"><div class="name">Clean — 흔들림 없이 매끈한 판</div><div class="show" style="font-family:'NaemkungClean',monospace">타자기 Aa</div></div>
+      <div class="card"><div class="name">본문 — 책처럼 긴 글을 읽기 위한 판</div><div class="show" style="font-family:'NaemkungText',monospace">타자기 Aa</div></div>
     </div>
+  </section>
+
+  <section id="text">
+    <h2>본문 판 (냄쿵타자기 본문)</h2>
+    <p>탈네모꼴은 제목과 짧은 글에서는 맛이 살지만, 책처럼 긴 글에서는 줄이 들쭉날쭉해 눈이 쉽게 지칩니다. 특히 「곡·굴·원」처럼 가로 모음 아래 받침이 영문 꼬리 높이까지 내려가 아랫첨자처럼 보였습니다. 본문 판은 같은 획과 자음 모양을 쓰되, 긴 글을 읽기 좋게 짜임을 다시 잡았습니다.</p>
+    <ul>
+      <li>받침이 있으면 초성·모음을 위로 올리고 받침을 키워, 글자마다 아랫선 차이를 크게 줄였습니다(반네모꼴)</li>
+      <li>한글 칸을 좁히고 초성을 키워, 글자 사이와 낱말 사이가 구분되게 했습니다</li>
+      <li>흔들림·거친 가장자리 없이 매끈하게, 획 굵기 차이도 줄였습니다</li>
+      <li>책에 자주 나오는 “ ” ‘ ’ … — 「 」 『 』 를 넣고, 마침표·쉼표 뒤 틈을 줄였습니다</li>
+    </ul>
+    <div class="specimen" style="font-family:'NaemkungText',monospace">
+      <p>창밖으로 첫눈이 내렸다. 그는 읽던 책을 덮고 한참을 창가에 서 있었다.</p>
+      <p>“올해는 꼭 끝까지 읽어 보자.” 오늘 밤은 길고, 커피는 아직 따뜻했다…</p>
+    </div>
+    <img src="images/text_sample.png" alt="Regular 와 본문 판 비교: 같은 문단을 두 판으로 짠 모습">
+    <p class="hint">본문 판은 아직 첫 판(0.1)입니다. 읽다가 불편한 글자가 있으면 <a href="#contact">연락</a>으로 알려 주세요.</p>
   </section>
 
   <section>
@@ -148,7 +169,7 @@
     <p>다른 글꼴 파일이나 윤곽을 가져다 쓰지 않았습니다. 글자마다 획이 지나가는 선을 코드로 적고, 그 선에 굵기를 입혀 만들었습니다. 만드는 코드도 저장소에 함께 공개합니다.</p>
     <ul>
       <li>현대 한글 11,172자, 한글 자모 51자, 영문·숫자·기호(ASCII)</li>
-      <li>고정폭: 영문 한 칸, 한글 한 칸이 각각 같은 너비</li>
+      <li>고정폭: 영문 한 칸, 한글 한 칸이 각각 같은 너비(본문 판은 마침표·쉼표·줄임표·줄표만 폭이 다름)</li>
       <li>0 은 가운데 점, 1·I·l 은 모양을 달리해 헷갈리지 않음</li>
     </ul>
   </section>
@@ -222,11 +243,15 @@
   font-family: "Naemkung Typewriter";
   src: url("NaemkungTypewriter-Bold.ttf") format("truetype");
   font-weight: 700;
+}
+@font-face {
+  font-family: "Naemkung Typewriter Text";
+  src: url("NaemkungTypewriterText-Regular.ttf") format("truetype");
 }</pre>
   </section>
 
   <footer>
-    냄쿵타자기 0.34 · © 2026 냄쿵콤파니 · SIL OFL 1.1 · <a href="NOTICE.md">권리 고지</a> · <a href="mailto:jaykafka12@gmail.com">연락</a>
+    냄쿵타자기 0.34 · 본문 0.1 · © 2026 냄쿵콤파니 · SIL OFL 1.1 · <a href="NOTICE.md">권리 고지</a> · <a href="mailto:jaykafka12@gmail.com">연락</a>
   </footer>
 </main>
 <script>
@@ -310,10 +335,10 @@
 
   function apply() {
     const w = weight.value;
-    const family = w === "clean" ? '"NaemkungClean", monospace' : '"Naemkung", monospace';
+    const family = w === "clean" ? '"NaemkungClean", monospace' : w === "text" ? '"NaemkungText", monospace' : '"Naemkung", monospace';
     for (const el of [input, mirror]) {
       el.style.fontFamily = family;
-      el.style.fontWeight = w === "clean" ? 400 : w;
+      el.style.fontWeight = w === "clean" || w === "text" ? 400 : w;
       el.style.fontSize = size.value + "px";
     }
     render();
